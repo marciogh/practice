@@ -1,10 +1,7 @@
 package cousins;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
-import java.util.Queue;
-import java.util.Stack;
 
 
 public class Cousins {
@@ -131,7 +128,8 @@ public class Cousins {
             );
 
         Cousins c = new Cousins();
-        c.replaceValueInTree(root);
+        TreeNode tree = c.replaceValueInTree(root);
+        System.out.println(tree);
     }
 
 }

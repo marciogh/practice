@@ -33,12 +33,18 @@ public class Indebted {
             }
         } else {
             int middle = (int)(start + end) / 2;
+            int last = array.size() - 1;
             if (array.get(middle) == target) {
                 return middle;
             }
             if (target < array.get(middle)) {
+                System.out.println(String.format("left %d %d", start, middle - 1));
                 return binarySearchRecursive(array, start, middle - 1, target);
             } else {
+                if (last - middle == 1) {
+                    middle++;
+                }
+                System.out.println(String.format("right %d %d", middle, last));
                 return binarySearchRecursive(array, middle, array.size() - 1, target);
             }
 
@@ -56,13 +62,16 @@ public class Indebted {
         numbers = List.of(-15, -10, -3, 0, 5, 8, 12);
         assertEquals(-1, binarySearch(numbers, 6));
 
-
         numbers = List.of(-100, -90, -70, -50, -30, -10, 0, 10, 22, 23, 45, 56, 67, 99);
         assertEquals(-1, binarySearch(numbers, 15));
         assertEquals(2, binarySearch(numbers, -70));
         assertEquals(12, binarySearch(numbers, 67));
         assertEquals(0, binarySearch(numbers, -100));
-        assertEquals(-1, binarySearch(numbers, 99));
+        assertEquals(13, binarySearch(numbers, 99));
+        assertEquals(0, binarySearch(numbers, -100));
+
+        numbers = List.of(-100, -90, -70, -50, -30, -10, 0, 10, 22, 23, 45, 56, 67, 99, 100);
+        assertEquals(14, binarySearch(numbers, 100));
         
     }
 }
