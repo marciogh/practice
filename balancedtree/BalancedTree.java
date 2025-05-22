@@ -50,6 +50,21 @@ public class BalancedTree {
         return result;
     }
 
+    private List<Integer> dfs() {
+        List<Integer> result = new ArrayList<>();
+        return dfsRecursive(root, result);
+    }
+
+    private List<Integer> dfsRecursive(Node node, List<Integer> result) {
+        if (node == null) {
+            return result;
+        }
+        result.add(node.val);
+        dfsRecursive(node.left, result);
+        dfsRecursive(node.right, result);
+        return result;
+    }
+
 
     @Test
     public void insertItems() {
@@ -62,6 +77,7 @@ public class BalancedTree {
         tree.insert(8);
         System.out.println("insertItems test");
         System.out.println(tree.bfs());
+        System.out.println(tree.dfs());
     }
     
 }
