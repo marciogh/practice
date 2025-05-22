@@ -17,22 +17,17 @@ public class BalancedTree {
         }
     }
 
-    private void insertBalancedRecursive(Node node, int val) {
-        if (node != null) {
-            if (val < node.val()) {
-                if (node.left() != null && node.left().val() >= val) {
-                    node = new Node(val, node.left(), node.right());
-                    return;
-                }
-                insertBalancedRecursive(node.left(), val);
-            } else {
-                if (node.right() != null && node.right().val() <= val) {
-                    node = new Node(val, node.left(), node.right());
-                    return;
-                }
-                insertBalancedRecursive(node.right(), val);
-            }
+    private Node insertBalancedRecursive(Node node, int val) {
+        if (node == null) {
+            return new Node(val, null, null);
         }
+        if (val < node.val) {
+            node.left = insertBalancedRecursive(node.left, val);
+        } else {
+            node.right = insertBalancedRecursive(node.right, val);
+        }
+        return node;
+
     }
 
     private List<Integer> bfs() {
@@ -44,13 +39,13 @@ public class BalancedTree {
         q.add(root);
         while(! q.isEmpty()) {
             Node n = q.poll();
-            if (n.left() != null) {
-                q.add(n.left());
+            if (n.left != null) {
+                q.add(n.left);
             }
-            if (n.right() != null) {
-                q.add(n.right());
+            if (n.right != null) {
+                q.add(n.right);
             }
-            result.add(n.val());
+            result.add(n.val);
         }
         return result;
     }
@@ -66,7 +61,7 @@ public class BalancedTree {
         tree.insert(14);
         tree.insert(8);
         System.out.println("insertItems test");
-        System.out.println(bfs());
+        System.out.println(tree.bfs());
     }
     
 }
