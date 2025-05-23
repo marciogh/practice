@@ -3,8 +3,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import org.junit.Test;
-
 public class BalancedTree {
     
     Node root = null;
@@ -21,10 +19,19 @@ public class BalancedTree {
         if (node == null) {
             return new Node(val, null, null);
         }
-        if (val < node.val) {
+        if (node.left != null && node.right != null) {
+            node.left = insertBalancedRecursive(node.left, val);
+        }
+        if (node.left == null && node.right == null) {
             node.left = insertBalancedRecursive(node.left, val);
         } else {
-            node.right = insertBalancedRecursive(node.right, val);
+            if (node.left.left == null) {
+                if (node.left.right == null) {
+                    node.right = insertBalancedRecursive(node.right, val);
+                } else {
+                    node.left = insertBalancedRecursive(node.left, val);                    
+                }
+            }
         }
         return node;
 
@@ -66,8 +73,7 @@ public class BalancedTree {
     }
 
 
-    @Test
-    public void insertItems() {
+    public static void main(String[] args) {
         BalancedTree tree = new BalancedTree();
         tree.insert(10);
         tree.insert(12);
