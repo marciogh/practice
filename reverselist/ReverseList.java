@@ -4,23 +4,25 @@ public class ReverseList {
 
     public ListNode reverseBetween(ListNode head, int left, int right) {
         ListNode n = head;
+        ListNode previous = null;
+        ListNode previousPLeft = null;
         ListNode pLeft = null;
         ListNode pRight = null;
-        ListNode previousRight = null;
         while (n != null) {
             if (n.val == left) {
+                previousPLeft = previous;
                 pLeft = n;
             }
             if (n.val == right) {
                 pRight = n;
-            }
-            if (pRight != null) {
-                pLeft.next = pRight;
-                previousRight = n;
+                previousPLeft.next = pRight.next;
+                pRight.next.next = pLeft;
+                pRight.next = null;
             }
             if (n.next == null) {
-                previousRight = pLeft;
+
             }
+            previous = n;
             n = n.next;
         }
         return head;
