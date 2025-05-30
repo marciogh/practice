@@ -1,16 +1,17 @@
-package beforepay;
+package lexicoblocks;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 import org.junit.Test;
 
 public class Main {
 
     public static boolean isValid(String s) {
-        Stack<Character> cs = new Stack<>();
+        Deque<Character> cs = new ArrayDeque<>();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (c == '[' || c == '{' || c == '(') {
