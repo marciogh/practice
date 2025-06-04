@@ -2,7 +2,6 @@ package snake2;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Queue;
 
 public class Snake2 {
 
