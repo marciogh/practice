@@ -7,16 +7,16 @@ public class Calculator {
 
     public int calculate(String s) throws IllegalArgumentException {
         String digits = "0123456789";
-        char space = ' ';
+        // char space = ' ';
         char sum = '+';
         char sub = '-';
-        char openBracket = '(';
-        char closeBracket = ')';
+        // char openBracket = '(';
+        // char closeBracket = ')';
 
         Deque<Integer> digitStack = new LinkedList<>();
         Deque<Integer> operandStack = new LinkedList<>();
         Deque<Character> operatorStack = new LinkedList<>();
-        Deque<Integer> operationStack = new LinkedList<>();
+        // Deque<Integer> operationStack = new LinkedList<>();
 
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
