@@ -141,4 +141,11 @@ public class RateLimiterExercise {
         }
     }
 
+    @Test
+    public void Modulus() {
+        for (int i = 1; i < 15; i++) {
+            System.out.println(i + " " + i % 5);
+        }
+    }
+
 }
